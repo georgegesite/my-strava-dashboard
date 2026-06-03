@@ -1,4 +1,4 @@
-import * as CONST from './consts'
+import * as CONST from './consts.js'
 
 class Utils {
 
@@ -13,9 +13,20 @@ class Utils {
     }
 
     static formatDate(value) {
-        return new Date(value).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric',})
+        return new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
     }
 
+    static formatPace(averageSpeedMetersPerSecond) {
+        if (!Number.isFinite(averageSpeedMetersPerSecond) || averageSpeedMetersPerSecond <= 0) {
+            return '—'
+        }
+
+        const paceMinutesPerKm = 60 / (averageSpeedMetersPerSecond * 3.6)
+        const minutes = Math.floor(paceMinutesPerKm)
+        const seconds = Math.round((paceMinutesPerKm - minutes) * 60)
+
+        return `${minutes}:${String(seconds).padStart(2, '0')}/km`
+    }
 }
 
-export default Utils;
+export default Utils

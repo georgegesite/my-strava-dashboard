@@ -80,7 +80,7 @@ function App() {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.35em] text-slate-400">{activity.sport_type === 'Run' ? 'Pace' : 'Average Speed'}</p>
-                  <p className="mt-1 text-3xl font-semibold text-cyan-300">{activity.sport_type === 'Run' ? Utils.formatPace(activity.average_speed) : `${(activity.average_speed ?? 0).toFixed(2)} m/s`}</p>
+                  <p className="mt-1 text-3xl font-semibold text-cyan-300">{Utils.formatAverageSpeed(activity.average_speed, activity.sport_type)}</p>
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Average Heart Rate</p>

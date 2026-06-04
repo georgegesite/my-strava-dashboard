@@ -27,6 +27,30 @@ class Utils {
 
         return `${minutes}:${String(seconds).padStart(2, '0')}/km`
     }
+
+    static formatAverageSpeed(averageSpeedMetersPerSecond, sportType) {
+        if (!Number.isFinite(averageSpeedMetersPerSecond) || averageSpeedMetersPerSecond <= 0) {
+            return '—'
+        }
+
+        if (sportType === 'Run') {
+            return this.formatPace(averageSpeedMetersPerSecond)
+        }
+
+        if (sportType === 'Ride') {
+            return `${(averageSpeedMetersPerSecond * 3.6).toFixed(1)} km/h`
+        }
+
+        if (sportType === 'Swim') {
+            const totalSeconds = 100 / averageSpeedMetersPerSecond
+            const minutes = Math.floor(totalSeconds / 60)
+            const seconds = Math.round(totalSeconds % 60)
+
+            return `${minutes}:${String(seconds).padStart(2, '0')}/100m`
+        }
+
+        return `${averageSpeedMetersPerSecond.toFixed(2)} m/s`
+    }
 }
 
 export default Utils

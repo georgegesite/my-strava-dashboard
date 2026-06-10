@@ -45,8 +45,8 @@ function App() {
   }, [accessToken])
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
-      <section className="mx-auto flex min-h-screen max-w-5xl items-center justify-center px-6 py-16">
+    <main className="">
+      {/* <section className="mx-auto flex min-h-screen max-w-5xl items-center justify-center px-6 py-16">
         <article className="w-full rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl shadow-cyan-950/30 backdrop-blur md:p-10">
           <p className="text-sm uppercase tracking-[0.35em] text-cyan-300">Strava dashboard</p>
           <h1 className="mt-4 text-4xl font-bold text-white md:text-5xl">Latest activity</h1>
@@ -94,7 +94,50 @@ function App() {
             <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-800/70 p-6 text-slate-200">No recent activity was returned from Strava.</div>
           )}
         </article>
-      </section>
+      </section> */}
+
+
+
+<div className="grid grid-cols-12 grid-rows-4 gap-1">
+    <div className="col-span-3 row-span-2">
+                               <div className="grid gap-6 rounded-3xl border border-cyan-500/20 bg-linear-to-br from-slate-800 to-slate-900 p-6 md:grid-cols-[1.1fr_0.9fr] md:p-8">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Most recent Workout</p>
+                <h2 className="mt-3 text-3xl font-semibold text-white">{activity.name}</h2>
+                <p className="mt-2 text-slate-300">{Utils.formatDate(activity.start_date_local)} • {activity.sport_type}</p>
+                <p className="mt-6 text-slate-200">{activity.description || 'A fresh Strava activity is ready to be shown here.'}</p>
+              </div>
+
+              <div className="grid gap-4 rounded-2xl border border-slate-700 bg-slate-950/70 p-5 text-slate-100">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Distance</p>
+                  <p className="mt-1 text-3xl font-semibold text-cyan-300">{Utils.formatDistance(activity.distance)}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Moving time</p>
+                  <p className="mt-1 text-3xl font-semibold text-cyan-300">{Utils.formatDuration(activity.moving_time)}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-slate-400">{activity.sport_type === 'Run' ? 'Pace' : 'Average Speed'}</p>
+                  <p className="mt-1 text-3xl font-semibold text-cyan-300">{Utils.formatAverageSpeed(activity.average_speed, activity.sport_type)}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Average Heart Rate</p>
+                  <p className="mt-1 text-3xl font-semibold text-cyan-300">{activity.average_heartrate ?? '—'}</p>
+                </div>
+              </div>
+            </div>
+    </div>
+    <div className="col-span-3 row-span-2 col-start-4 row-start-3">3</div>
+    <div className="col-span-3 row-span-2 col-start-1 row-start-3">10</div>
+    <div className="col-span-3 row-span-2 col-start-4 row-start-1">13</div>
+    <div className="col-span-3 row-span-2 col-start-7 row-start-1">14</div>
+    <div className="col-span-3 row-span-2 col-start-10 row-start-1">15</div>
+    <div className="col-span-3 row-span-2 col-start-7 row-start-3">16</div>
+    <div className="col-span-3 row-span-2 col-start-10 row-start-3">17</div>
+</div>
+    
+    
     </main>
   )
 }

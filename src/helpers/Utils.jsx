@@ -2,7 +2,11 @@ import * as CONST from './consts.js'
 
 class Utils {
 
-    static formatDistance(meters) {
+    static formatDistance(meters, sportType) {
+        if (sportType === 'Swim') {
+            return `${Math.round(meters)} m`
+        }
+
         return `${(meters / 1000).toFixed(1)} km`
     }
 
